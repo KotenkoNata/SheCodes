@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Weather</title>
+    <link href="src/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;300&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="weather-container">
+    <div class="search-container">
+        <form id="search-form">
+            <label>
+                <input id="search-field" class="search-field" type="search"/>
+                <input class="search-btn" type="submit" value="Search"/>
+            </label>
+        </form>
+        <button id="current-location" class="current-location-btn">
+            <img src="src/img/location.svg" width="20" height="20">
+        </button>
+        <h1 id ="current-city" class="current-city">
+            Porto
+        </h1>
+    </div>
+        <hr>
+    <div class="details-container">
+        <div class="img-container">
+            <img src="src/img/weather-few-clouds.svg" alt="Partly Cloudy">
+            <h3 class="weather-name">
+                Partly Cloudy
+            </h3>
+        </div>
+        <div class="description-container">
+            <div class="date-details-container">
+                <p class="date" id="date">May 10-2022 - Tue</p>
+                <h2 class="time" id="time">19 : 29</h2>
+            </div>
+            <hr>
+            <div class="weather-details-container">
+                <div>
+                    <h2 id="degree" class="temperature">19<span>&#176;</span></h2>
+                    <ul>
+                        <li>
+                            Hi 29 <sup>o</sup>
+                        </li>
+                        <li>
+                            Lo 19 <sup>o</sup>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="weather-details-list">
+                    <li>
+                        Feels like: 25
+                    </li>
+                    <li>
+                        Humidity: 51%
+                    </li>
+                    <li>
+                        Wind: 10km/h
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+        <hr>
+    <div>
+        <ul class="week-list">
+            <li class="week-item">
+                <h3>Mon</h3>
+                <img src="src/img/weather-clear.svg" width="70" alt="Sun weather">
+                <ul>
+                    <li>
+                        Hi 25 <sup>o</sup>
+                    </li>
+                    <li>
+                        Lo 17 <sup>o</sup>
+                    </li>
+                </ul>
+            </li>
+            <li class="week-item">
+                <h3>Tue</h3>
+                <img src="src/img/weather-storm.svg" width="70" alt="Storm">
+                <ul>
+                    <li>
+                        Hi 21 <sup>o</sup>
+                    </li>
+                    <li>
+                        Lo 15 <sup>o</sup>
+                    </li>
+                </ul>
+            </li>
+            <li class="week-item">
+                <h3>Wed</h3>
+                <img src="src/img/weather-showers-scattered.svg" width="70" alt="Shower with scatter">
+                <ul>
+                    <li>
+                        Hi 19 <sup>o</sup>
+                    </li>
+                    <li>
+                        Lo 11 <sup>o</sup>
+                    </li>
+                </ul>
+            </li>
+            <li class="week-item">
+                <h3>Thu</h3>
+                <img src="src/img/weather-overcast.svg" width="70" alt="Overcast">
+                <ul>
+                    <li>
+                        Hi 17 <sup>o</sup>
+                    </li>
+                    <li>
+                        Lo 10 <sup>o</sup>
+                    </li>
+                </ul>
+            </li>
+            <li class="week-item">
+                <h3>Fri</h3>
+                <img src="src/img/weather-snow.svg" width="70" alt="Snowing">
+                <ul>
+                    <li>
+                        Hi 15 <sup>o</sup>
+                    </li>
+                    <li>
+                        Lo 10 <sup>o</sup>
+                    </li>
+                </ul>
+            </li>
+            <li class="week-item">
+                <h3>Sat</h3>
+                <img src="src/img/weather-showers.svg" width="70" alt="Shower">
+                <ul>
+                    <li>
+                        Hi 23 <sup>o</sup>
+                    </li>
+                    <li>
+                        Lo 17 <sup>o</sup>
+                    </li>
+                </ul>
+            </li>
+            <li class="week-item">
+                <h3>Sun</h3>
+                <img src="src/img/weather-storm.svg" width="70" alt="Storm weather">
+                <ul>
+                    <li>
+                        Hi 27 <sup>o</sup>
+                    </li>
+                    <li>
+                        Lo 21 <sup>o</sup>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+        <hr>
+    <p>created by
+        <a class="contact-link" target="_blank" href="https://github.com/KotenkoNata">
+            Nataliia Kotenko
+        </a></p>
+    </div>
+</div>
+<script src="src/index.js"></script>
+</body>
+</html>
