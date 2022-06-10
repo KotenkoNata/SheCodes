@@ -79,6 +79,7 @@ ul{
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 2.5em;
     font-weight: normal;
+    text-transform: capitalize;
 }
 
 .details-container{
@@ -164,6 +165,7 @@ degree{
 
 .degree-celsius a{
     text-decoration: none;
+    color: black;
 }
 
 .degree-celsius a.active{

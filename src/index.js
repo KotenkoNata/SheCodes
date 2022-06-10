@@ -8,6 +8,12 @@ const weatherDescription = document.querySelector("#weather-title");
 const celsiusLink = document.querySelector("#celsius-link");
 const fahrenheitLink = document.querySelector("#fahrenheit-link");
 let celsiusTemperature = null;
+const maxTemperature = document.querySelector("#max-temp");
+const minTemperature = document.querySelector("#min-temp");
+const feelsTemperature = document.querySelector("#feels-temp");
+const humidity = document.querySelector("#humidity");
+const windSpeed = document.querySelector("#wind-speed");
+document.body.onload = handleCurrentLocation;
 
 const months = [
   "January",
@@ -42,6 +48,7 @@ function sendLocationRequest(latitude, longitude) {
       changeDegree(response);
       changeMainIcon(response);
       changeDegree(response);
+      updateWeatherDetails(response);
       celsiusTemperature = Math.floor(response.data.main.temp);
       return response;
     });
@@ -55,6 +62,7 @@ function sendRequest(city) {
       changeDegree(response);
       changeMainIcon(response);
       changeWeatherDescription(response);
+      updateWeatherDetails(response);
       celsiusTemperature = Math.floor(response.data.main.temp);
       return response;
     });
@@ -137,3 +145,11 @@ function handleDegreeClick(event) {
 
 celsiusLink.addEventListener("click", handleDegreeClick);
 fahrenheitLink.addEventListener("click", handleDegreeClick);
+
+function updateWeatherDetails(response) {
+  maxTemperature.innerHTML = Math.floor(response.data.main.temp_max);
+  minTemperature.innerHTML = Math.floor(response.data.main.temp_min);
+  feelsTemperature.innerHTML = Math.floor(response.data.main.feels_like);
+  humidity.innerHTML = Math.floor(response.data.main.humidity);
+  windSpeed.innerHTML = response.data.wind.speed;
+}
