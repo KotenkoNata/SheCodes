@@ -22,11 +22,11 @@ ul{
 
 .weather-container{
     margin: 0 auto;
-    max-width: 50%;
     background-color: #D9AFD9;
     background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
     border-radius: 2%;
     padding: 20px;
+    max-width: 750px;
 }
 
 .search-container{
@@ -38,6 +38,7 @@ ul{
 .search-field{
     width: 17.5rem;
     background-color: #A7DFF5;
+    color: #757672;
     border: none;
     outline: 1px solid rgba(117,118,114,0.54);
     outline-offset: 2px;
@@ -57,22 +58,27 @@ ul{
 }
 
 .current-location-btn{
-    margin-left: 20px;
+    margin-left: 3em;
     border: none;
     background-color: transparent;
     color: #757672;
-    height: 1.5rem;
+    height: 32px;
+    width: 32px;
 }
 
 .current-location-btn:hover{
     cursor: pointer;
 }
 
+.location-icon{
+    fill: #757672;
+}
+
 .current-city{
     margin-left: 1.5rem;
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 2.5em;
-    font-weight: lighter;
+    font-weight: normal;
 }
 
 .details-container{
@@ -92,10 +98,15 @@ ul{
     max-width: 200px;
 }
 
+#main-icon{
+    width: 180px;
+}
+
 .weather-name{
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 1.5em;
     font-weight: lighter;
+    text-transform: capitalize;
 }
 
 .description-container{
@@ -134,15 +145,42 @@ ul{
     font-weight: normal;
 }
 
+.degree-container{
+    position: relative;
+}
+
 degree{
     font-weight: lighter;
     font-size: 0.5em;
 }
 
+.degree-celsius{
+    position: absolute;
+    display: block;
+    font-size: 1em;
+    top: 0;
+    right: -3em;
+}
+
+.degree-celsius a{
+    text-decoration: none;
+}
+
+.degree-celsius a.active{
+    color: #757672;
+    cursor: default;
+}
+
+.degree-celsius a.active:hover{
+    text-decoration: none;
+}
+
+
+
 .weather-details-list{
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 1em;
-    margin-left: 1.8em;
+    margin-left: 4em;
     margin-top: 0.5em;
 }
 

@@ -3,6 +3,11 @@ const key = "a83f619db0bf9e35a21b85c461d75e1d";
 const url = "https://api.openweathermap.org/data/2.5/weather";
 const degree = document.querySelector("#degree");
 const currentLocation = document.querySelector("#current-location");
+const mainIcon = document.querySelector("#main-icon");
+const weatherDescription = document.querySelector("#weather-title");
+const celsiusLink = document.querySelector("#celsius-link");
+const fahrenheitLink = document.querySelector("#fahrenheit-link");
+let celsiusTemperature = null;
 
 const months = [
   "January",
@@ -33,8 +38,11 @@ function sendLocationRequest(latitude, longitude) {
   axios
     .get(`${url}?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`)
     .then(function (response) {
-      changeTileCity(response.data.name);
+      changeTitleCity(response.data.name);
       changeDegree(response);
+      changeMainIcon(response);
+      changeDegree(response);
+      celsiusTemperature = Math.floor(response.data.main.temp);
       return response;
     });
 }
@@ -45,8 +53,19 @@ function sendRequest(city) {
     .then(function (response) {
       console.log(response);
       changeDegree(response);
+      changeMainIcon(response);
+      changeWeatherDescription(response);
+      celsiusTemperature = Math.floor(response.data.main.temp);
       return response;
     });
+}
+
+function changeMainIcon(response) {
+  mainIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+}
+
+function changeWeatherDescription(response) {
+  weatherDescription.innerHTML = `${response.data.weather[0].description}`
 }
 
 function showTime(current) {
@@ -90,18 +109,31 @@ function handleSubmit(event) {
   const searchFiled = document.querySelector("#search-field");
   const searchValue = searchFiled.value;
 
-  changeTileCity(searchValue);
+  changeTitleCity(searchValue);
 
   sendRequest(searchValue);
 }
 
 function changeDegree(response) {
   degree.innerHTML = `${Math.floor(
-    response.data.main.temp
-  )}<span>&#176;</span>`;
+    response.data.main.temp)}`;
 }
 
-function changeTileCity(city) {
+function changeTitleCity(city) {
   const title = document.querySelector("#current-city");
   title.innerHTML = city;
 }
+
+function handleDegreeClick(event) {
+  event.preventDefault();
+  if (event.target === celsiusLink) {
+    degree.innerHTML = celsiusTemperature;
+  } else {
+    degree.innerHTML = `${Math.floor(celsiusTemperature * 1.8 + 32)}`;
+  }
+  celsiusLink.classList.toggle('active');
+  fahrenheitLink.classList.toggle('active');
+}
+
+celsiusLink.addEventListener("click", handleDegreeClick);
+fahrenheitLink.addEventListener("click", handleDegreeClick);

@@ -12,14 +12,16 @@
 <div class="container">
     <div class="weather-container">
     <div class="search-container">
-        <form id="search-form">
+        <form id="search-form" autocomplete="off">
             <label>
                 <input id="search-field" class="search-field" type="search"/>
                 <input class="search-btn" type="submit" value="Search"/>
             </label>
         </form>
         <button id="current-location" class="current-location-btn">
-            <img src="src/img/location.svg" width="20" height="20">
+            <svg class="location-icon" width="32px" height="32px">
+                <use href="./src/img/symbol-defs.svg#location"></use>
+            </svg>
         </button>
         <h1 id ="current-city" class="current-city">
             Porto
@@ -28,8 +30,8 @@
         <hr>
     <div class="details-container">
         <div class="img-container">
-            <img src="src/img/weather-few-clouds.svg" alt="Partly Cloudy">
-            <h3 class="weather-name">
+            <img id="main-icon" src="src/img/weather-few-clouds.svg" alt="Partly Cloudy">
+            <h3 id="weather-title" class="weather-name">
                 Partly Cloudy
             </h3>
         </div>
@@ -41,7 +43,15 @@
             <hr>
             <div class="weather-details-container">
                 <div>
-                    <h2 id="degree" class="temperature">19<span>&#176;</span></h2>
+                    <div class="degree-container">
+                        <h2 id="degree" class="temperature">
+                            19
+                        </h2>
+                        <span class="degree-celsius">
+                            <a id="celsius-link" class="active" href="#">°C</a> | <a id="fahrenheit-link" href="#">°F</a>
+                        </span>
+                    </div>
+
                     <ul>
                         <li>
                             Hi 29 <sup>o</sup>
