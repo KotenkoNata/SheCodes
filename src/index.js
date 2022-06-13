@@ -164,24 +164,32 @@ function updateWeatherDetails(response) {
   windSpeed.innerHTML = response.data.wind.speed;
 }
 
-function createWeekForecast(response) {
-  console.log(response.data.daily)
-  let forecastHTML = '';
+function formatDate(timestamp) {
+  let date = new Date(timestamp *1000);
+  let day = date.getDay();
+  return weekDays[day];
+}
 
-  weekDays.forEach(day => {
-    console.log(forecastHTML);
-    forecastHTML +=`<li className="week-item">
-    <h3>${day}</h3>
-    <img src="src/img/weather-clear.svg" width="70" alt="Sun weather">
+function createWeekForecast(response) {
+
+  let forecast = response.data.daily;
+  let forecastHTML = '';
+  console.log(forecast)
+  forecast.forEach((day, index) => {
+    if(index <= 6){
+      forecastHTML +=`<li className="week-item">
+    <h3>${formatDate(day.dt)}</h3>
+    <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" width="70" alt="${day.weather[0].description}">
       <ul>
         <li>
-          Hi 25 <sup>o</sup>
+          Hi ${Math.floor(day.temp.max)} <sup>o</sup>
         </li>
         <li>
-          Lo 17 <sup>o</sup>
+          Lo ${Math.floor(day.temp.min)} <sup>o</sup>
         </li>
       </ul>
   </li>`
+    }
   })
 
   weekForecast.innerHTML = forecastHTML;
