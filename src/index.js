@@ -42,6 +42,13 @@ function handleCurrentLocation() {
 
 currentLocation.addEventListener("click", handleCurrentLocation);
 
+function getForecast(location) {
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lon}&appid=${key}&units=metric`;
+  axios
+    .get(apiURL)
+    .then(createWeekForecast)
+}
+
 function sendLocationRequest(latitude, longitude) {
   axios
     .get(`${url}?lat=${latitude}&lon=${longitude}&appid=${key}&units=metric`)
@@ -66,6 +73,7 @@ function sendRequest(city) {
       changeWeatherDescription(response);
       updateWeatherDetails(response);
       celsiusTemperature = Math.floor(response.data.main.temp);
+      getForecast(response.data.coord);
       return response;
     });
 }
@@ -156,7 +164,8 @@ function updateWeatherDetails(response) {
   windSpeed.innerHTML = response.data.wind.speed;
 }
 
-function createWeekForecast() {
+function createWeekForecast(response) {
+  console.log(response.data.daily)
   let forecastHTML = '';
 
   weekDays.forEach(day => {
@@ -179,4 +188,3 @@ function createWeekForecast() {
 
 }
 
-createWeekForecast();
