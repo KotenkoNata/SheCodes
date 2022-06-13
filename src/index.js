@@ -13,8 +13,6 @@ const minTemperature = document.querySelector("#min-temp");
 const feelsTemperature = document.querySelector("#feels-temp");
 const humidity = document.querySelector("#humidity");
 const windSpeed = document.querySelector("#wind-speed");
-document.body.onload = handleCurrentLocation;
-
 const weekForecast = document.querySelector("#week-forecast");
 
 const months = [
@@ -57,8 +55,10 @@ function sendLocationRequest(latitude, longitude) {
       changeDegree(response);
       changeMainIcon(response);
       changeDegree(response);
+      changeWeatherDescription(response);
       updateWeatherDetails(response);
       celsiusTemperature = Math.floor(response.data.main.temp);
+      getForecast(response.data.coord);
       return response;
     });
 }
@@ -68,6 +68,7 @@ function sendRequest(city) {
     .get(`${url}?q=${city}&appid=${key}&units=metric`)
     .then(function (response) {
       console.log(response);
+      changeTitleCity(response.data.name);
       changeDegree(response);
       changeMainIcon(response);
       changeWeatherDescription(response);
@@ -77,6 +78,8 @@ function sendRequest(city) {
       return response;
     });
 }
+
+sendRequest("Kyiv");
 
 function changeMainIcon(response) {
   mainIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
@@ -119,7 +122,6 @@ function changeTime() {
 changeTime();
 
 const searchForm = document.querySelector("#search-form");
-
 searchForm.addEventListener("submit", handleSubmit);
 
 function handleSubmit(event) {
@@ -128,7 +130,6 @@ function handleSubmit(event) {
   const searchValue = searchFiled.value;
 
   changeTitleCity(searchValue);
-
   sendRequest(searchValue);
 }
 
@@ -171,15 +172,13 @@ function formatDate(timestamp) {
 }
 
 function createWeekForecast(response) {
-
   let forecast = response.data.daily;
   let forecastHTML = '';
-  console.log(forecast)
   forecast.forEach((day, index) => {
     if(index <= 6){
-      forecastHTML +=`<li className="week-item">
+      forecastHTML +=`<li style="position:relative;width: calc((100% - 6em) / 7);margin-right: 1em;" className="week-item">
     <h3>${formatDate(day.dt)}</h3>
-    <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" width="70" alt="${day.weather[0].description}">
+    <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" width="80" alt="${day.weather[0].description}">
       <ul>
         <li>
           Hi ${Math.floor(day.temp.max)} <sup>o</sup>
@@ -191,8 +190,6 @@ function createWeekForecast(response) {
   </li>`
     }
   })
-
   weekForecast.innerHTML = forecastHTML;
-
 }
 
