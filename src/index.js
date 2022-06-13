@@ -15,6 +15,8 @@ const humidity = document.querySelector("#humidity");
 const windSpeed = document.querySelector("#wind-speed");
 document.body.onload = handleCurrentLocation;
 
+const weekForecast = document.querySelector("#week-forecast");
+
 const months = [
   "January",
   "February",
@@ -153,3 +155,28 @@ function updateWeatherDetails(response) {
   humidity.innerHTML = Math.floor(response.data.main.humidity);
   windSpeed.innerHTML = response.data.wind.speed;
 }
+
+function createWeekForecast() {
+  let forecastHTML = '';
+
+  weekDays.forEach(day => {
+    console.log(forecastHTML);
+    forecastHTML +=`<li className="week-item">
+    <h3>${day}</h3>
+    <img src="src/img/weather-clear.svg" width="70" alt="Sun weather">
+      <ul>
+        <li>
+          Hi 25 <sup>o</sup>
+        </li>
+        <li>
+          Lo 17 <sup>o</sup>
+        </li>
+      </ul>
+  </li>`
+  })
+
+  weekForecast.innerHTML = forecastHTML;
+
+}
+
+createWeekForecast();
