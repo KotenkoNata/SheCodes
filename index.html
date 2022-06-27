@@ -1,93 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Weather</title>
-    <link href="src/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@200;300&family=Roboto+Flex:opsz,wght@8..144,300;8..144,400&family=Roboto:wght@100;300;400;500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="About Nataliia Kotenko, frontend developer based in Ukraine">
+    <title>Front-end developer - Nataliia Kotenko</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="src/styles.css" />
 </head>
 <body>
-<div class="container">
-    <div class="weather-container">
-    <div class="search-container">
-        <form id="search-form" autocomplete="off">
-            <label>
-                <input id="search-field" class="search-field" type="search"/>
-                <input class="search-btn" type="submit" value="Search"/>
-            </label>
-        </form>
-        <button id="current-location" class="current-location-btn">
-            <svg class="location-icon" width="32px" height="32px">
-                <use href="./src/img/symbol-defs.svg#location"></use>
-            </svg>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">Nataliia Kotenko</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <h1 id ="current-city" class="current-city">
-        </h1>
-    </div>
-        <hr>
-    <div class="details-container">
-        <div class="img-container">
-            <img id="main-icon" src="" alt="Partly Cloudy">
-            <h3 id="weather-title" class="weather-name">
-            </h3>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html"
+                    >Home</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html#contact">Contact me</a>
+                </li>
+            </ul>
         </div>
-        <div class="description-container">
-            <div class="date-details-container">
-                <p class="date" id="date"></p>
-                <h2 class="time" id="time"></h2>
-            </div>
-            <hr>
-            <div class="weather-details-container">
-                <div>
-                    <div class="degree-container">
-                        <h2 id="degree" class="temperature">
-                        </h2>
-                        <span class="degree-celsius">
-                            <a id="celsius-link" class="active" href="#">°C</a> | <a id="fahrenheit-link" href="#">°F</a>
-                        </span>
-                    </div>
-
-                    <ul>
-                        <li>
-                            Hi <span id="max-temp"></span> <sup>o</sup>
-                        </li>
-                        <li>
-                            Lo <span id="min-temp"></span> <sup>o</sup>
-                        </li>
-                    </ul>
-                </div>
-
-                <ul class="weather-details-list">
-                    <li>
-                        Feels like: <span id="feels-temp"></span> <sup>o</sup>
-                    </li>
-                    <li>
-                        Humidity: <span id="humidity"></span> %
-                    </li>
-                    <li>
-                        Wind: <span id="wind-speed"></span> m/h
-                    </li>
-                </ul>
-            </div>
-
+    </div>
+</nav>
+<h2 class="text-center">👋 Hi I am</h2>
+<h1 class="text-center">Nataliia Kotenko</h1>
+<h3 class="text-center">Front-end developer, based in Ukraine</h3>
+<div class="navigation-links mb-5">
+    <a href="about.html#contact" class="primary-link">Contact me</a>
+    <a href="about.html" class="secondary-link">About me</a>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="src/img/yoga.png" class="img-fluid rounded d-none d-sm-block" alt="Girl is doing yoga"/>
         </div>
-
+        <div class="col-sm-6">
+            <h2 class="mb-3">Yoga app</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+                quia, dignissimos nam ratione veniam quibusdam porro omnis quam vel
+                eos eveniet alias temporibus deserunt veritatis minima fugiat
+                explicabo eum dolore.
+            </p>
+            <div class="mt-5">
+                <a href="#" class="primary-link btn-link">Launch Yoga App</a>
+            </div>
+        </div>
     </div>
-        <hr>
-    <div>
-        <ul id="week-forecast" class="week-list">
-        </ul>
+    <div class="row mt-5">
+        <div class="col-sm-6">
+            <h2 class="mb-3">Weather app</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+                quia, dignissimos nam ratione veniam quibusdam porro omnis quam vel
+                eos eveniet alias temporibus deserunt veritatis minima fugiat
+                explicabo eum dolore.
+            </p>
+            <div class="mt-5">
+                <a href="#" class="primary-link btn-link">Launch Weather App</a>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <img src="src/img/weather.png" class="img-fluid rounded d-none d-sm-block" alt="Weather App"/>
+        </div>
     </div>
-        <hr>
-        <p>
-            <a class="contact-link" target="_blank" href="https://github.com/KotenkoNata/SheCodes">
-                Open-source code, by Nataliia Kotenko
-            </a>
-        </p>
+    <div class="row mt-5">
+        <div class="col-sm-6">
+            <img src="src/img/yogurt.png" class="img-fluid rounded d-none d-sm-block" alt="Image of yogurt in the cup"/>
+        </div>
+        <div class="col-sm-6">
+            <h2 class="mb-3">Yogurt app</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
+                quia, dignissimos nam ratione veniam quibusdam porro omnis quam vel
+                eos eveniet alias temporibus deserunt veritatis minima fugiat
+                explicabo eum dolore.
+            </p>
+            <div class="mt-5">
+                <a href="#" class="primary-link btn-link">Launch Weather App</a>
+            </div>
+        </div>
     </div>
 </div>
-<script src="src/index.js"></script>
 </body>
 </html>
